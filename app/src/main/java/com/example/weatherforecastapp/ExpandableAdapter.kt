@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherforecastapp.model.NextDays
 import com.example.weatherforecastapp.utils.epochToDate
+import com.example.weatherforecastapp.utils.epochToDay
+import com.example.weatherforecastapp.utils.epochToDayName
 
 
 class ExpandableAdapter(
@@ -18,8 +20,8 @@ class ExpandableAdapter(
 ) : RecyclerView.Adapter<ExpandableAdapter.ViewHolder>() {
 
     companion object {
-        const val VIEW_TYPE_HEADER = 0
-        const val VIEW_TYPE_ITEM = 1
+        const val PARENT = 0
+        const val CHILD = 1
     }
 
 
@@ -28,7 +30,7 @@ class ExpandableAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            VIEW_TYPE_HEADER -> {
+            PARENT -> {
                 ViewHolder.HeaderViewHolder(
                     layoutInflater.inflate(R.layout.item_header, parent, false)
 
@@ -64,9 +66,9 @@ class ExpandableAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) {
-            VIEW_TYPE_HEADER
+            PARENT
         } else {
-            VIEW_TYPE_ITEM
+            CHILD
         }
     }
 
@@ -98,31 +100,21 @@ class ExpandableAdapter(
     sealed class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         class HeaderViewHolder(itemView: View) : ViewHolder(itemView) {
-            private val headerTextView = itemView.findViewById<TextView>(R.id.branch_name_title)
-            private val branchDistance = itemView.findViewById<TextView>(R.id.branch_distance)
+            private val headerAvgTmp = itemView.findViewById<TextView>(R.id.header_avg_tmp)
+            private val headerMinTmp = itemView.findViewById<TextView>(R.id.header_min_tmp)
+            private val headerDayName = itemView.findViewById<TextView>(R.id.header_day)
+            private val headerDayDate = itemView.findViewById<TextView>(R.id.header_day_date)
 
-            @SuppressLint("SetTextI18n")
             fun onBind(
                 currDay: NextDays,
                 onClickListener: View.OnClickListener,
 
                 ) {
-                headerTextView.text = epochToDate(currDay.epochTime)
+                headerDayDate.text = epochToDay(currDay.epochTime).toString()
+                headerAvgTmp.text = currDay.avgTmp.toString().take(5) + " \u2103"
+                headerMinTmp.text = currDay.minTmp.toString().take(5) + " \u2103"
+                headerDayName.text = epochToDayName(currDay.epochTime).take(3)
 
-//                if (latitude != null && longitude != null) {
-//
-//                    val startPoint = Location("point")
-//                    startPoint.latitude = latitude
-//                    startPoint.longitude = longitude
-//
-//                    val endPoint = Location("point")
-//                    endPoint.latitude = branchInfo.latitude.toDouble()
-//                    endPoint.longitude = branchInfo.longitude.toDouble()
-//                    branchDistance.text =
-//                        "(${String.format("%.2f", (startPoint.distanceTo(endPoint) / 1000))} km)"
-//                } else {
-//                    branchDistance.text = null
-//                }
 
                 itemView.setOnClickListener {
                     onClickListener.onClick(it)

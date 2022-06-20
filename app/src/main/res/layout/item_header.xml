@@ -1,37 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     android:background="@drawable/rounded_background">
-
-
-    <TextView
-        android:id="@+id/branch_name_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="25dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/header_tmp_icon"
+        android:layout_width="65dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/day_layout"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="weather temp" />
+        app:srcCompat="@drawable/normal_temp_icon" />
 
-
-    <TextView
-
-        android:id="@+id/branch_distance"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/day_layout"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/branch_name_title"
-        tools:text="day" />
+        android:layout_marginStart="25dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/header_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Day" />
+
+        <TextView
+            android:id="@+id/header_day_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="nr" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/name_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@id/header_tmp_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+
+            android:id="@+id/header_avg_tmp"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/header_tmp_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="avg temp" />
+
+        <TextView
+            android:id="@+id/header_min_tmp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="min tmp"
+            app:layout_constraintStart_toStartOf="@+id/header_avg_tmp"
+            app:layout_constraintTop_toBottomOf="@+id/header_avg_tmp" />
+
+    </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/body_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/body_max_tmp"
+                android:text="max_tmp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/body_mean_tmp"
+                android:text="mean_tmp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/body_morning_tmp"
+                android:text="morning_tmp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/body_day_tmp"
+                android:text="day_tmp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/body_night_tmp"
+                android:text="night_tmp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/body_humidity"
+                android:text="humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-       sendRequest("51","17")
+       sendRequest("17","51")
 
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -98,7 +98,8 @@ class MainActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
-                       showUp(it.fiveDays())
+                        showUp(it.fiveDays())
+                        //it.print()
                     },
                     {
                         val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)

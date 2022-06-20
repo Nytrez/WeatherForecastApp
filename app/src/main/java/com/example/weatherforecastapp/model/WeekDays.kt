@@ -20,7 +20,6 @@ class WeekDays(@field:Expose @field:SerializedName("list") val weekDays : List<D
         var day = Double.MIN_VALUE
         var night = Double.MIN_VALUE
         var humidity = 0.0
-        var i = 0
 
         val currDayTmps = mutableListOf<Double>()
         val nextDaysValues = mutableListOf<NextDays>()
@@ -28,6 +27,8 @@ class WeekDays(@field:Expose @field:SerializedName("list") val weekDays : List<D
         for(it in weekDays){
             if(epochToDate(epochTime) != epochToDate(it.dayEpochToDate())){
               if(epochTime != 0L) {
+                  Log.d("TEST", currDayTmps.toString())
+
                   val minTmp = currDayTmps.min()
                   val maxTmp = currDayTmps.max()
                   val avgTmp = currDayTmps.average()
@@ -43,7 +44,8 @@ class WeekDays(@field:Expose @field:SerializedName("list") val weekDays : List<D
                 morning = Double.MIN_VALUE
                 day = Double.MIN_VALUE
                 night = Double.MIN_VALUE
-                humidity = 0.0
+                humidity = it.humidity()
+                currDayTmps.add(it.temperature())
 
             } else {
                 when (epochToHour(it.dayEpochToDate())) {

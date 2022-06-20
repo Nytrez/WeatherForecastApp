@@ -19,3 +19,18 @@ fun epochToHour(time: Long): Int {
         .toLocalDateTime()
     return dt.hour
 }
+
+fun epochToDay(time: Long): Int {
+    // no need for null checking
+    val dt = Instant.ofEpochSecond(time)
+        .atZone(ZoneId.systemDefault())
+        .toLocalDateTime()
+    return dt.dayOfMonth
+}
+
+fun epochToDayName(time:Long) : String {
+    val dt = Instant.ofEpochSecond(time)
+        .atZone(ZoneId.systemDefault())
+        .toLocalDateTime()
+    return dt.dayOfWeek.name
+}
