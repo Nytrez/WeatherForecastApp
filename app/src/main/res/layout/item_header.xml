@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/headerLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     android:layout_marginBottom="5dp"
+    android:elevation="8dp"
     android:background="@drawable/rounded_background">
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,73 +24,85 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-    <ImageView
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
-        android:id="@+id/header_tmp_icon"
-        android:layout_width="65dp"
-        android:layout_height="55dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/day_layout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/normal_temp_icon" />
 
-    <LinearLayout
-        android:id="@+id/day_layout"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/header_tmp_icon"
+                android:layout_width="65dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/day_layout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/normal_temp_icon" />
 
-        <TextView
-            android:id="@+id/header_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Day" />
+            <LinearLayout
+                android:id="@+id/day_layout"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/header_day_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="nr" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/header_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Day" />
+
+                <TextView
+                    android:id="@+id/header_day_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="nr" />
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/name_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@id/header_tmp_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:id="@+id/name_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/header_tmp_icon"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+                <TextView
 
-            android:id="@+id/header_avg_tmp"
-            android:layout_width="wrap_content"
+                    android:id="@+id/header_avg_tmp"
+                    android:layout_width="wrap_content"
 
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="22sp"
-            app:layout_constraintStart_toEndOf="@+id/header_tmp_icon"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="avg temp" />
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toEndOf="@+id/header_tmp_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="avg temp" />
 
-        <TextView
-            android:id="@+id/header_min_tmp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="min tmp"
-            app:layout_constraintStart_toStartOf="@+id/header_avg_tmp"
-            app:layout_constraintTop_toBottomOf="@+id/header_avg_tmp" />
+                <TextView
+                    android:id="@+id/header_min_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="min tmp"
+                    app:layout_constraintStart_toStartOf="@+id/header_avg_tmp"
+                    app:layout_constraintTop_toBottomOf="@+id/header_avg_tmp" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+
+                android:id="@+id/header_arrow"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/arrow_down_icon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout

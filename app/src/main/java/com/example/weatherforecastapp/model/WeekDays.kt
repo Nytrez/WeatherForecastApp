@@ -1,18 +1,11 @@
 package com.example.weatherforecastapp.model
 
-import android.util.Log
 import com.example.weatherforecastapp.utils.epochToDate
 import com.example.weatherforecastapp.utils.epochToHour
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class WeekDays(@field:Expose @field:SerializedName("list") val weekDays : List<DayOfWeek>) {
-
-    fun print(){
-        for (i in weekDays){
-            Log.d("TEST", "${i.temperature()}")
-        }
-    }
 
     fun fiveDays() : List<NextDays>{
         var epochTime = 0L
@@ -27,8 +20,6 @@ class WeekDays(@field:Expose @field:SerializedName("list") val weekDays : List<D
         for(it in weekDays){
             if(epochToDate(epochTime) != epochToDate(it.dayEpochToDate())){
               if(epochTime != 0L) {
-                  Log.d("TEST", currDayTmps.toString())
-
                   val minTmp = currDayTmps.min()
                   val maxTmp = currDayTmps.max()
                   val avgTmp = currDayTmps.average()

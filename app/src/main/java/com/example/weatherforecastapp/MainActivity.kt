@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-       sendRequest("17","51")
 
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -67,58 +66,8 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
-
-    private fun showUp(list: List<NextDays>) {
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val arrayList = arrayListOf<ExpandableAdapter>()
-
-        for (item in list) {
-            arrayList.add(ExpandableAdapter(item, this))
-        }
-
-        val concatAdapterConfig = ConcatAdapter.Config.Builder()
-            .setIsolateViewTypes(false)
-            .build()
-
-        val concatAdapter = ConcatAdapter(concatAdapterConfig, arrayList)
-        recyclerView.layoutManager = LinearLayoutManager(baseContext)
-        recyclerView.adapter = concatAdapter
-    }
-
-    private fun sendRequest(
-        longitude: String,
-        latitude: String,
-    ) {
-        val compositeDisposable = CompositeDisposable()
-        compositeDisposable.add(
-            BranchFinderService.buildService().getForecast(
-                latitude, longitude
-            )
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(
-                    {
-                        showUp(it.fiveDays())
-                        //it.print()
-                    },
-                    {
-                        val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
-                        builder.setMessage(
-                            it.message
-                        )
-                            .setTitle("Something went wrong while downloading weather forecast")
-                            .setCancelable(false)
-                            .setPositiveButton(
-                                "Ok"
-                            ) { _, _ ->
-
-                            }
-                            .create()
-                            .show()
-                    })
-        )
-
-    }
 }
+
+
 
 
