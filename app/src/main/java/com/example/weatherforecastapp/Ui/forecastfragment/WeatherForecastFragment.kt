@@ -9,6 +9,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +53,8 @@ class WeatherForecastFragment : Fragment() {
 
             if (resultLn != Double.MIN_VALUE && resultLt != Double.MIN_VALUE) {
                 binding.locationSearchText.setText(getLocationFromXY(resultLn, resultLt))
-                sendRequest(resultLn.toString(), resultLt.toString())
+                //we can automatically send a request after map selection but i preffered only to send a request when user clicks on the button
+               // sendRequest(resultLn.toString(), resultLt.toString())
             }
         }
         return binding.root
@@ -116,7 +118,12 @@ class WeatherForecastFragment : Fragment() {
     private fun getLocationFromXY(longitude: Double, latitude: Double): String {
         val geocoder = Geocoder(context, Locale.getDefault())
         val addresses = geocoder.getFromLocation(latitude, longitude, 1)
-        return addresses[0].locality
+        //if there is no location/city, return empty string
+        return if(addresses[0].locality != null) {
+            addresses[0].locality
+        } else {
+           ""
+        }
     }
 
     /**
