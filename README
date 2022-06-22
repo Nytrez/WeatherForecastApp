@@ -1,10 +1,8 @@
 # ABOUT
------
 This is a simple Weather Forecasting App created using  https://openweathermap.org/api 
 Forecasting only the temperature for the next 5 days 
 
 # HOW TO USE
----------
 ![Help image](readmeimg/helpimage3.png)
 
 After opening the app you can enter the location manualy or click the marker image for automatic user location obtainment. Alternatively you can hold the marker icon and choose the location on map. 
