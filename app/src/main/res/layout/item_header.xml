@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/headerLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/headerLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
     android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
     android:layout_marginEnd="10dp"
-    android:layout_marginBottom="5dp"
+    android:background="@drawable/rounded_background"
     android:elevation="8dp"
-    android:background="@drawable/rounded_background">
+    android:layoutAnimation="@anim/recycler_view_animation">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -27,15 +31,16 @@
 
             <ImageView
                 android:id="@+id/header_tmp_icon"
-                android:layout_width="65dp"
-                android:layout_height="55dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/day_layout"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/normal_temp_icon" />
+                app:srcCompat="@drawable/normal_temp_icon"
+                android:contentDescription="@string/temperature_icon" />
 
             <LinearLayout
                 android:id="@+id/day_layout"
@@ -51,13 +56,13 @@
                     android:id="@+id/header_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Day" />
+                    android:text="@string/day" />
 
                 <TextView
                     android:id="@+id/header_day_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="nr" />
+                    android:text="@string/nr" />
             </LinearLayout>
 
 
@@ -65,7 +70,7 @@
                 android:id="@+id/name_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="16dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/header_tmp_icon"
@@ -78,7 +83,7 @@
 
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@+id/header_tmp_icon"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="avg temp" />
@@ -87,7 +92,7 @@
                     android:id="@+id/header_min_tmp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="min tmp"
+                    android:text="@string/min_tmp"
                     app:layout_constraintStart_toStartOf="@+id/header_avg_tmp"
                     app:layout_constraintTop_toBottomOf="@+id/header_avg_tmp" />
 
@@ -98,56 +103,76 @@
                 android:id="@+id/header_arrow"
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-                android:layout_marginEnd="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/arrow_down_icon" />
+                app:srcCompat="@drawable/arrow_down_icon"
+                android:contentDescription="@string/arrow_image" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:id="@+id/body_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/body_max_tmp"
-                android:text="max_tmp"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/body_mean_tmp"
-                android:text="mean_tmp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/body_morning_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/morning_tmp" />
+
+                <TextView
+                    android:id="@+id/body_day_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/day_tmp" />
+
+                <TextView
+                    android:id="@+id/body_night_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/night_tmp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/body_morning_tmp"
-                android:text="morning_tmp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/body_day_tmp"
-                android:text="day_tmp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/body_night_tmp"
-                android:text="night_tmp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="15dp"
-                android:id="@+id/body_humidity"
-                android:text="humidity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/body_max_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/max_tmp" />
+
+                <TextView
+                    android:id="@+id/body_mode_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/mode_temp" />
+
+                <TextView
+                    android:id="@+id/body_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/humidity" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

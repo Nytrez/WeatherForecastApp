@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapSelectionFragment">
+    tools:context=".Ui.MapSelectionFragment">
 
-    <fragment xmlns:tools="http://schemas.android.com/tools"
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
@@ -16,10 +16,10 @@
     <Button
         android:id="@+id/select_from_map_button"
         android:layout_width="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="Select"
         android:layout_height="50dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/select"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

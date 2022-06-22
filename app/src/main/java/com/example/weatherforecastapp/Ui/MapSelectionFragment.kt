@@ -1,14 +1,14 @@
-package com.example.weatherforecastapp
+package com.example.weatherforecastapp.Ui
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import com.example.weatherforecastapp.R
 import com.example.weatherforecastapp.databinding.FragmentSecondBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -17,8 +17,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 /**
- * A simple [Fragment] subclass as the second destination in the navigation.
+ * Fragment created for handling Google Maps functionality
+ * mainly for map movement and marker creation
  */
+
 class MapSelectionFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
@@ -29,9 +31,9 @@ class MapSelectionFragment : Fragment() {
     private var shopLn: Double? = null
 
     private val callback = OnMapReadyCallback { googleMap ->
-
-        val center = LatLng(50.9, 10.40)
-        val zoom = 6F
+        //camera center above Europe (just felt like it)
+        val center = LatLng(50.0, 10.0)
+        val zoom = 1F
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
         googleMap.setOnMapClickListener {
@@ -40,15 +42,13 @@ class MapSelectionFragment : Fragment() {
             googleMap.clear()
             lastLatLngMarker = MarkerOptions().position(it)
             googleMap.addMarker(lastLatLngMarker!!)
-
         }
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
@@ -62,15 +62,13 @@ class MapSelectionFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
 
         binding.selectFromMapButton.setOnClickListener {
-
+            //returning coordinates to the WeatherForecastFragment
             val locationResults = bundleOf()
-            if(shopLn != null && shopLt != null) {
-                locationResults.putDouble("Longitude", shopLn!!)
-                locationResults.putDouble("Latitude", shopLt!!)
+            if (shopLn != null && shopLt != null) {
+                locationResults.putDouble(getString(R.string.longitude), shopLn!!)
+                locationResults.putDouble(getString(R.string.latitude), shopLt!!)
             }
-            Log.d("TEST", "into $shopLt $shopLn")
-            setFragmentResult("dataLoc", locationResults)
-
+            setFragmentResult(getString(R.string.data_key), locationResults)
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }

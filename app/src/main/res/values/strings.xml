@@ -1,12 +1,42 @@
 <resources>
     <string name="app_name">WeatherForecastApp</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">App Guide</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label">Weather Forecast</string>
+    <string name="second_fragment_label">Select location</string>
+
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="Invalid_string">Invalid location</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="need_gps">Need GPS</string>
+    <string name="location_turned_off_message">Please turn Location on</string>
+    <string name="weather_forecast_error_downloading">Something went wrong while downloading weather forecast</string>
+    <string name="ok">OK</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="data_key">dataLoc</string>
+    <string name="quick_guide">Quick Guide</string>
+    <string name="header_guide">1. Average day temperature\n 2. Minimal day temperature</string>
+    <string name="location_guide">If you want to get your location automatically, please click the marker image\n   Alternatively, you can
+        hold the button to choose location from map</string>
+    <string name="enter_location_guide_txt">Please enter a location.\nYou can also tap or hold the marker icon</string>
+    <string name="header_info_image">header_info_image</string>
+    <string name="location_marker_info">location_marker_info</string>
+    <string name="select">Select</string>
+    <string name="location_marker">Location marker</string>
+    <string name="search">search</string>
+    <string name="temperature_icon">Temperature icon</string>
+    <string name="day">Day</string>
+    <string name="nr">nr</string>
+    <string name="min_tmp">min tmp</string>
+    <string name="morning_tmp">morning_tmp</string>
+    <string name="day_tmp">day_tmp</string>
+    <string name="night_tmp">night_tmp</string>
+    <string name="max_tmp">max_tmp</string>
+    <string name="mode_temp">mode temp</string>
+    <string name="humidity">humidity</string>
+    <string name="arrow_image">Arrow Image</string>
 </resources>

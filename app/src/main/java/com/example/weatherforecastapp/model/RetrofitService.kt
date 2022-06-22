@@ -1,5 +1,6 @@
 package com.example.weatherforecastapp.model
 
+import com.example.weatherforecastapp.model.ApiResponse.Days
 import com.google.gson.GsonBuilder
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.Retrofit
@@ -14,10 +15,10 @@ interface OpenWeatherMapApi {
     fun getForecast(
         @Query("lat") latitude: String,
         @Query("lon") longitude: String,
-        @Query("units") typeOfUnits : String = "metric",
+        @Query("units") typeOfUnits: String = "metric",
         @Query("appid") userAppId: String = "4391014971a63498ee6be88eb3b17b44"
 
-    ): Observable<WeekDays>
+    ): Observable<Days>
 
     companion object {
         const val BASE_URL = "https://api.openweathermap.org"
