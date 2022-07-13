@@ -1,5 +1,7 @@
 # ABOUT
 
+It is work in progress, lacking MVVM and DI
+
 This is a simple Weather Forecasting App created using  https://openweathermap.org/api 
 Forecasting only the temperature for the next 5 days 
 
